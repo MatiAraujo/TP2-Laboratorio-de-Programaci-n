@@ -22,11 +22,18 @@ class ParserHtml:
         for titulo, autor, texto in self.articulos:
             articulos_por_autor[autor].append((titulo, texto))
 
+        indice_autores = "<div class='indice'><h2>Autores</h2><ul>\n"
+        for autor in articulos_por_autor:
+            id_autor = autor.lower().replace(" ", "-")
+            indice_autores += f'<li><a href="#{id_autor}">{autor}</a></li>\n'
+        indice_autores += "</ul></div>\n"
+
         contenido_articulos = ""
 
         for autor, articulos in articulos_por_autor.items():
+            id_autor = autor.lower().replace(" ", "-")
             contenido_articulos += f"""
-            <div class="autor">
+            <div class="autor" id="{id_autor}">
                 <h3>{autor}</h3>
             """
 
@@ -107,10 +114,28 @@ class ParserHtml:
             padding: 16px 12px;
         }}
 
+        a {{
+        color: #007BFF; /* o el color que prefieras */
+        text-decoration: none;
+        }}
+
+        a:visited {{
+        color: #007BFF; /* mismo color que el estado normal */
+        }}
+
+        a:hover {{
+        text-decoration: underline;
+        }}
+
+        a:active {{
+        color: #0056b3;
+        }}
+
     </style>
 </head>
 <body>
     <header><h1>Noticias del día</h1></header>
+    {indice_autores}
     {contenido_articulos}
 </body>
 <footer><p>Fecha de creación: {fecha} </p></footer>
@@ -125,7 +150,7 @@ articulos = [
     ("Nueva apertura cultural en la ciudad", "Laura Fernández", "El teatro municipal reabre sus puertas con una muestra gratuita para todo público."),
     ("Tecnología al alcance de todos", "Martín Díaz", "Una startup local desarrolló una app que traduce lenguaje de señas en tiempo real."),
     ("Suben los precios de los alimentos", "Carla Suárez", "El índice de inflación marcó un aumento del 5% en productos de la canasta básica."),
-    ("Deportes: el equipo local sigue invicto", "Andrés Molina", "Con un gol en el último minuto, el equipo se mantiene primero en la tabla."),
+    ("Deportes: el equipo local sigue invicto", "Ian Colombo", "Con un gol en el último minuto, el equipo se mantiene primero en la tabla."),
     ("Educación en tiempos digitales", "Mariana López", "El 70% de las escuelas ya incorporaron plataformas virtuales como complemento."),
     ("Recomendaciones para el cuidado del medio ambiente", "Camila Torres", "Separar los residuos y reducir el uso de plásticos puede marcar la diferencia."),
     ("Festival gastronómico en el parque", "Valentina Godoy", "Más de 30 puestos ofrecerán comidas típicas durante todo el fin de semana."),
