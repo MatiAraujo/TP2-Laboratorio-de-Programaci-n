@@ -1,26 +1,25 @@
 from datetime import datetime
 from collections import defaultdict
+from Articulo import *
 
 class ParserHtml:
     def __init__(self, articulos):
         self.articulos = self.filtrar_articulos(articulos)
 
     def filtrar_articulos(self, articulos):
-        filtrados = []
-        for titulo, autor, texto in articulos:
-            if titulo.strip() and autor.strip() and texto.strip():
-                normalizar = autor.strip().title()
-                filtrados.append((titulo.strip(), normalizar, texto.strip()))
-        return filtrados
+        return [
+        Articulo(titulo, autor, texto)
+        for titulo, autor, texto in articulos
+        if titulo.strip() and autor.strip() and texto.strip()
+    ]
 
 
     def generar_html(self, archivo_html='index.html'):
         fecha = datetime.now().strftime("%d/%m/%Y %H:%M")
 
         articulos_por_autor = defaultdict(list)
-
-        for titulo, autor, texto in self.articulos:
-            articulos_por_autor[autor].append((titulo, texto))
+        for articulo in self.articulos:
+            articulos_por_autor[articulo.autor].append(articulo)
 
         indice_autores = "<div class='indice'><h2>Autores</h2><ul>\n"
         for autor in articulos_por_autor:
@@ -37,13 +36,8 @@ class ParserHtml:
                 <h3>{autor}</h3>
             """
 
-            for titulo, texto in articulos:
-                contenido_articulos += f"""
-                <div class="articulo">
-                    <h2>{titulo}</h2>
-                    <p>{texto}</p>
-                </div>
-                """
+            for articulo in articulos:
+                contenido_articulos += articulo.to_html()
             contenido_articulos += "</div>\n"
 
         html_completo = f"""<!DOCTYPE html>
