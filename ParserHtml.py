@@ -1,6 +1,14 @@
 class ParserHtml:
     def __init__(self, articulos):
-        self.articulos = articulos
+        self.articulos = self.filtrar_articulos(articulos)
+
+    def filtrar_articulos(self, articulos):
+        filtrados = []
+        for titulo, autor, texto in articulos:
+            if titulo.strip() and autor.strip() and texto.strip():
+                normalizar = autor.strip().title()
+                filtrados.append((titulo.strip(), normalizar, texto.strip()))
+        return filtrados
 
 
     def generar_html(self, archivo_html='index.html'):
@@ -31,7 +39,7 @@ class ParserHtml:
             f.write(html_completo)
 
 articulos = [
-    ("Pronóstico del tiempo", "Pablo Pérez", "Hoy estará parcialmente soleado, y pueden haber chubascos por la tarde."),
+    ("Pronóstico del tiempo", "pablo pérez", "Hoy estará parcialmente soleado, y pueden haber chubascos por la tarde."),
     ("Nueva apertura cultural en la ciudad", "Laura Fernández", "El teatro municipal reabre sus puertas con una muestra gratuita para todo público."),
     ("Tecnología al alcance de todos", "Martín Díaz", "Una startup local desarrolló una app que traduce lenguaje de señas en tiempo real."),
     ("Suben los precios de los alimentos", "Carla Suárez", "El índice de inflación marcó un aumento del 5% en productos de la canasta básica."),
