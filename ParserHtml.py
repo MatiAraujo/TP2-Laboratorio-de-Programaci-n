@@ -1,3 +1,5 @@
+from datetime import datetime
+
 class ParserHtml:
     def __init__(self, articulos):
         self.articulos = self.filtrar_articulos(articulos)
@@ -12,6 +14,7 @@ class ParserHtml:
 
 
     def generar_html(self, archivo_html='index.html'):
+        fecha = datetime.now().strftime("%d/%m/%Y %H:%M")
         contenido_articulos = ""
 
         for titulo, autor, texto in self.articulos:
@@ -27,11 +30,13 @@ class ParserHtml:
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <title>Noticias</title>
 </head>
 <body>
     <h1>Noticias del día</h1>
     {contenido_articulos}
 </body>
+<footer><p>Fecha de creación: {fecha} </p></footer>
 </html>
 """
 
