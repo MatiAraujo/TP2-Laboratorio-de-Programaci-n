@@ -13,6 +13,13 @@ class ParserHtml:
         if titulo.strip() and autor.strip() and texto.strip()
     ]
 
+    def filtrar_por_palabra(self, palabra_clave):
+        filtrados = []
+        for art in self.articulos:
+            if art.contiene_palabra(palabra_clave):
+                filtrados.append(art)
+        return filtrados
+
 
     def generar_html(self, archivo_html='index.html'):
         fecha = datetime.now().strftime("%d/%m/%Y %H:%M")
@@ -154,4 +161,5 @@ articulos = [
 
 nuevo = ParserHtml(articulos)
 nuevo.generar_html()
+
 

@@ -11,3 +11,6 @@ class Articulo:
             <p>{self.texto}</p>
         </div>
         """
+    
+    def contiene_palabra(self, palabra):
+        return palabra.lower() in self.texto.lower()
