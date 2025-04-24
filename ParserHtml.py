@@ -1,4 +1,5 @@
 from datetime import datetime
+from collections import defaultdict
 
 class ParserHtml:
     def __init__(self, articulos):
@@ -15,16 +16,28 @@ class ParserHtml:
 
     def generar_html(self, archivo_html='index.html'):
         fecha = datetime.now().strftime("%d/%m/%Y %H:%M")
-        contenido_articulos = ""
+
+        articulos_por_autor = defaultdict(list)
 
         for titulo, autor, texto in self.articulos:
+            articulos_por_autor[autor].append((titulo, texto))
+
+        contenido_articulos = ""
+
+        for autor, articulos in articulos_por_autor.items():
             contenido_articulos += f"""
-            <div class="articulo">
-                <h2>{titulo}</h2>
-                <h4>{autor}</h4>
-                <p>{texto}</p>
-            </div>
+            <div class="autor">
+                <h3>{autor}</h3>
             """
+
+            for titulo, texto in articulos:
+                contenido_articulos += f"""
+                <div class="articulo">
+                    <h2>{titulo}</h2>
+                    <p>{texto}</p>
+                </div>
+                """
+            contenido_articulos += "</div>\n"
 
         html_completo = f"""<!DOCTYPE html>
 <html lang="es">
@@ -57,7 +70,7 @@ class ParserHtml:
             color: white;
             border-radius: 8px;
             padding: 5px;
-            margin-top: 30px;
+            margin-top: 5px;
             font-size: 0.9em;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }}
@@ -82,6 +95,18 @@ class ParserHtml:
             line-height: 1.4;
         }}
 
+        .autor h3 {{
+            margin-top: 0px;
+            margin-bottom: 5px;
+        }}
+        
+        .autor {{
+            margin-top: 30px;
+            background-color: rgba(247,120,56,1);
+            border-radius: 8px;
+            padding: 16px 12px;
+        }}
+
     </style>
 </head>
 <body>
@@ -102,7 +127,7 @@ articulos = [
     ("Suben los precios de los alimentos", "Carla Suárez", "El índice de inflación marcó un aumento del 5% en productos de la canasta básica."),
     ("Deportes: el equipo local sigue invicto", "Andrés Molina", "Con un gol en el último minuto, el equipo se mantiene primero en la tabla."),
     ("Educación en tiempos digitales", "Mariana López", "El 70% de las escuelas ya incorporaron plataformas virtuales como complemento."),
-    ("Recomendaciones para el cuidado del medio ambiente", "Diego Rivas", "Separar los residuos y reducir el uso de plásticos puede marcar la diferencia."),
+    ("Recomendaciones para el cuidado del medio ambiente", "Camila Torres", "Separar los residuos y reducir el uso de plásticos puede marcar la diferencia."),
     ("Festival gastronómico en el parque", "Valentina Godoy", "Más de 30 puestos ofrecerán comidas típicas durante todo el fin de semana."),
     ("La música vuelve a los escenarios", "Javier Gómez", "Este viernes se realizará un recital gratuito en la plaza central con bandas locales."),
     ("Consejos para una vida saludable", "Camila Torres", "Dormir bien, hidratarse y caminar 30 minutos al día mejoran la salud general.")
