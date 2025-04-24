@@ -31,9 +31,61 @@ class ParserHtml:
 <head>
     <meta charset="UTF-8">
     <title>Noticias</title>
+
+    <style>
+        body {{
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            background-image: url(fondo.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }}
+
+        header, footer {{
+            background-color: rgba(247,120,56,1);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }}
+
+        .articulo {{
+            background-color: #00a5e5;
+            color: white;
+            border-radius: 8px;
+            padding: 5px;
+            margin-top: 30px;
+            font-size: 0.9em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }}
+
+        footer{{
+            margin-top: 30px;
+        }}
+        
+        .articulo h2 {{
+            color: #ffffff;
+        }}
+
+        .articulo h4 {{
+            color: #d9f3ff;
+            font-weight: normal;
+            font-size: 0.95em;
+        }}
+
+        .articulo p {{
+            color: #f0f8ff;
+            margin: 0;
+            line-height: 1.4;
+        }}
+
+    </style>
 </head>
 <body>
-    <h1>Noticias del día</h1>
+    <header><h1>Noticias del día</h1></header>
     {contenido_articulos}
 </body>
 <footer><p>Fecha de creación: {fecha} </p></footer>
