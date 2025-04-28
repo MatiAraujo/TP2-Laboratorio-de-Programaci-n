@@ -1,3 +1,5 @@
+from componentes import navbar_html, generar_footer
+
 class Articulo:
     def __init__(self, titulo, autor, texto):
         self.titulo = titulo.strip()
@@ -11,7 +13,7 @@ class Articulo:
             texto_recortado = self.texto
         return f"""
         <div class="articulo">
-            <h2>{self.titulo}</h2>
+            
             <p>{texto_recortado}</p>
         </div>
         """
@@ -27,66 +29,23 @@ class Articulo:
 <head>
     <meta charset="UTF-8">
     <title>{self.titulo}</title>
-    <style>
-        body {{
-                font-family: Arial, sans-serif;
-                background-color: #f9f9f9;
-                background-image: url(fondo.jpg);
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                color: #333;
-                margin: 0;
-                padding: 20px;
-            }}
-            .articulo {{
-                background-color: #00a5e5;
-                color: white;
-                border-radius: 8px;
-                padding: 5px 5px;
-                margin-top: 5px;
-                font-size: 0.9em;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }}
-             h1 {{
-                color: #ffffff;
-            }}
-            h4 {{
-                color: #d9f3ff;
-                font-weight: normal;
-                font-size: 0.95em;
-            }}
-            p {{
-                color: #f0f8ff;
-                margin: 0;
-                line-height: 1.4;
-            }}
-        a {{
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #007BFF;
-        }}
-        .articulo_ind{{
-                margin-top: 30px;
-                background-color: rgba(247,120,56,1);
-                border-radius: 8px;
-                padding: 16px 12px;
-        }}
-        
-        
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../estilos.css">
+
+    
 </head>
-<body>
-    <a href="index.html">← Volver al inicio</a>
+<body class="body_articulo">
+    {navbar_html}
     <div class="articulo_ind">
         <h1>{self.titulo}</h1>
         <h4>Por {self.autor}</h4>
-        <p class="articulo">{self.texto}</p>
+        <p class="articulo_p">{self.texto}</p>
     </div>
+    {generar_footer()}
 </body>
 </html>"""
 
-        with open(nombre_archivo, "w", encoding="utf-8") as f:
+        with open(f"Articulos/{nombre_archivo}", "w", encoding="utf-8") as f:
             f.write(contenido)
 
         return nombre_archivo  
