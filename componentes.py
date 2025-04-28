@@ -18,6 +18,7 @@ navbar_html = """<nav class="navbar navbar-expand-lg navbar-light bg-nav">
             </div>
         </nav>"""
 
+#solución enlace inicio en index.html
 def navbar_inicio(nav_html):    
     if "../index.html" in nav_html:
         nav_html = nav_html.replace("../index.html","index.html")
@@ -25,8 +26,9 @@ def navbar_inicio(nav_html):
 
 def generar_footer():
     anio_actual = datetime.now().strftime("%d/%m/%Y %H:%M")
-    pie_pagina = f"""<footer class="foot">
-        <p>Noticias del día - Todos los derechos reservados.</p>
-        <p>Creado {anio_actual}</p>
-    </footer>"""
+    pie_pagina = f"""
+        <footer class="foot">
+            <p>Noticias del día - Todos los derechos reservados.</p>
+            <p>Creado {anio_actual}</p>
+        </footer>"""
     return pie_pagina

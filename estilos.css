@@ -23,7 +23,6 @@ body {
 
 .div_articulo {
     background-color: #00a5e5;
-    color: white;
     border-radius: 8px;
     padding: 5px;
     margin-top: 5px;
@@ -46,7 +45,7 @@ body {
 }
     
 
-header, .foot footer{
+header, .foot{
     background-color: rgba(247,120,56,1);
     color: white;
     padding: 15px;
@@ -76,12 +75,11 @@ header, .foot footer{
     max-width: 1000px;
     margin: 40px auto;
     border-collapse: collapse;
-    background-color: rgba(255, 255, 255, 0.85);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     font-size: 1rem;
-    text-align: left; 
+    
 }
 
 .articulo_ind{
@@ -98,7 +96,7 @@ header, .foot footer{
     vertical-align: middle;
 }
 
-th{
+.tabla_autores th{
     background-color: #777777;
     color: white;
 }
@@ -114,23 +112,18 @@ td{
     color: #ffffff;
 }
 
-.body_articulo p {
+.articulo_p, .articulo_recortado {
     background-color: #00a5e5;
     color: white;
     border-radius: 8px;
-    padding: 5px 5px;
-    margin-top: 5px;
+    padding: 15px 15px;
+    margin: 5px 5px;
     font-size: 0.9em;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin: 0;
     line-height: 1.4;
     
 }
-.volver {
-display: inline-block;
-margin-bottom: 20px;
-color: #007BFF;
-}
+
 
 /*Boot*/
 .card-title {
@@ -142,4 +135,28 @@ color: #007BFF;
 
 .bg-nav{
     background-color: #6b6b6b;
+}
+
+.card.h-100 {
+    background-color: #E6E6E6 !important;
+}
+
+.navegacion-articulos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.contenedor-anterior, .contenedor-siguiente {
+    flex: 1;
+}
+
+.contenedor-anterior {
+    text-align: left;
+}
+
+.contenedor-siguiente {
+    text-align: right;
 }

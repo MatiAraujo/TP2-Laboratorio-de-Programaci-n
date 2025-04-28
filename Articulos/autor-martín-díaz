@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-        <html lang="es">
-        <head>
-            <meta charset="UTF-8">
-            <title>Artículos de Martín Díaz</title>
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-            <link rel="stylesheet" href="../estilos.css">
-        </head>
-        <body>
-            <nav class="navbar navbar-expand-lg navbar-light bg-nav">
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Artículos de Martín Díaz</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../estilos.css">
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-nav">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContenido" aria-controls="navbarContenido" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,10 +23,11 @@
                 </div>
             </div>
         </nav>
-            
+        
+        
             <div class="autor" id="martín-díaz">
-            <h1>Artículos de Martín Díaz</h1>
-            <div class="row">
+            <h1>Artículos de Martín Díaz</h1>   
+            <div class="row"> 
             
                         <div class="col-md-4 mb-4">
                             <a href="lg_se_hace_con_el_control_de_bear_robotics.html" class="text-decoration-none">
@@ -48,11 +50,13 @@
                 </div>
             </div>
 
-            
+        
+        
         <footer class="foot">
             <p>Noticias del día - Todos los derechos reservados.</p>
-            <p>Creado 28/04/2025 17:25</p>
+            <p>Creado 28/04/2025 02:40</p>
         </footer>
-        </body>
-        </html>
+    </body>
         
+    </html>
+    
